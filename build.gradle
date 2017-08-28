@@ -1,0 +1,55 @@
+// Indicates it's a Java based project
+apply plugin: 'java'
+
+// Makes the code runnable from shells
+// Run the application from shell using 'gradle run' or 'gradlew run'
+apply plugin: 'application'
+
+mainClassName = 'hello.HelloWorld'
+
+plugins {
+  id 'com.gradle.build-scan' version '1.9'
+}
+
+buildScan {
+  licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+  licenseAgree = 'yes'
+}
+
+// Adds sources for 3rd party i.e. external libraries.
+// This indicates that the build should resolve its dependencies from the
+//   Maven Central repository
+// tag::repositories[]
+repositories {
+  mavenCentral()
+}
+// end::repositories[]
+
+// tag::dependencies[]
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// Declare dependencies in 'dependencies' block.
+// Dependencies written in the format of "group-name:library-name:version".
+// 'compile' indicates that the dependency should be available at compile-time.
+// 'testCompile' dependencies used for compiling and running tests but not
+//    required for building or running the project's runtime code.
+// 'providedCompile' indicates required dependencies for compiling the project
+//    code, but that will be provided at runtime by a container running the
+//    code (e.g. the Java Servlet API)
+dependencies {
+  compile "joda-time:joda-time:2.2"
+  testCompile "junit:junit:4.12"
+}
+// end::dependencies[]
+
+// Specify the name for JAR artifact
+// This block indicates how the JAR file will be named.
+// In this case, it will render 'gs-gradle-0.1.0.jar'
+// Format: 'baseName-version.extension'
+// tag::jar[]
+jar {
+  baseName = 'gs-gradle'
+  version = '0.1.0'
+}
+// end::jar[]
