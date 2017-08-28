@@ -1,3 +1,7 @@
+plugins {
+  id 'com.gradle.build-scan' version '1.9'
+}
+
 // Indicates it's a Java based project
 apply plugin: 'java'
 
@@ -6,10 +10,6 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 mainClassName = 'hello.HelloWorld'
-
-plugins {
-  id 'com.gradle.build-scan' version '1.9'
-}
 
 buildScan {
   licenseAgreementUrl = 'https://gradle.com/terms-of-service'
