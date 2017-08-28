@@ -14,6 +14,8 @@ plugins {
 buildScan {
   licenseAgreementUrl = 'https://gradle.com/terms-of-service'
   licenseAgree = 'yes'
+  tag 'HELLO'
+  link 'GitHub', 'https://github.com/ashiqmoh/SpringWithGradle'
 }
 
 // Adds sources for 3rd party i.e. external libraries.
